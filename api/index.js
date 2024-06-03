@@ -3,7 +3,7 @@ const userRoutes = require("./routes/user.route");
 const authRoutes = require("./routes/auth");
 const express = require("express");
 const mongoose = require("mongoose");
-
+const cors = require("cors");
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
@@ -13,6 +13,7 @@ mongoose
     console.log(err);
   });
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 
